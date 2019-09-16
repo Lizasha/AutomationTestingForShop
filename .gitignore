@@ -1,0 +1,8 @@
+*.exe
+*.jar
+*.iml
+*.log
+.idea
+
+AutomationTask/.idea
+AutomationTask/.target
