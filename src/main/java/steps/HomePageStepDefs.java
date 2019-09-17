@@ -3,13 +3,14 @@ package steps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
 
 import driver.DriverManager;
-import pages.MainPage;
+import pages.HomePage;
 
 public class MainPageStepDefs {
 
-	private MainPage mainPage = new MainPage();
+	private HomePage homePage = new HomePage();
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -18,7 +19,9 @@ public class MainPageStepDefs {
 	
 	@Test
 	public void checkDataSheet() {
-		mainPage.openPage();
+		homePage.openPage();
+		homePage.hoverOnElement();
+		homePage.clickOnEveningDresses();
 	}
 	
 	@AfterClass
