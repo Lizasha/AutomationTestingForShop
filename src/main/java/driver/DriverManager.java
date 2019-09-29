@@ -23,7 +23,6 @@ private static DriverManager instance;
 	}
 
 	private static void initializationDriver() {
-		//System.setProperty("webdriver.chrome.driver", "C:/Users/Elizaveta_Shabalina/Projects/page_object_project/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 	}

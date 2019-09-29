@@ -3,6 +3,4 @@
 *.iml
 *.log
 .idea
-
-AutomationTask/.idea
-AutomationTask/.target
+target

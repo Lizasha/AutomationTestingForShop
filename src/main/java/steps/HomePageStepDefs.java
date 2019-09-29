@@ -25,18 +25,25 @@ public class HomePageStepDefs {
 	
 	@Test
 	public void checkDataSheet() {
-		Map<String,String> datasheet = itemPage.readDataSheet();
-		
-		homePage.openPage();
-		homePage.hoverOnDressesCategory();
-		homePage.clickOnEveningDresses();
-		searchResultsPage.hoverOnPrintedDress();
-		searchResultsPage.clickOnMoreButton();
-		Assert.assertEquals(datasheet.get("Compositions"),"Viscose");
-		Assert.assertEquals(datasheet.get("Styles"),"Dressy");
-		Assert.assertEquals(datasheet.get("Properties"),"Short Dress");
+		homePage
+			.openPage()
+			.findCategory("Dresses")
+			.hover()
+			.findSubcategory("Evening Dresses")
+			.click();
+
+		searchResultsPage
+			.findProduct("Printed Dress")
+			.hover()
+			.clickMoreButton();
+
+		Map<String,String> dataSheet = itemPage.readDataSheet();
+
+		Assert.assertEquals(dataSheet.get("Compositions"),"Viscose");
+		Assert.assertEquals(dataSheet.get("Styles"),"Dressy");
+		Assert.assertEquals(dataSheet.get("Properties"),"Short Dress");
 	}
-	
+
 	@AfterClass
 	public static void afterClass() {
 		DriverManager.getInstance().closeDriver();
