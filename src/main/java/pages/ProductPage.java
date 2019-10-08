@@ -8,14 +8,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import driver.DriverManager;
+import pages.elements.SizePicker;
 
-public class ItemPage extends AbstractPage {
+public class ProductPage extends AbstractPage {
 
 	private static final By SHEET_TABLE = By.xpath("//*[contains(@class,'table-data-sheet')]");
+
 	private static final By SHEET_ENTRIES = By.xpath("./tbody//tr");
+
 	
-	public ItemPage(WebDriver driver) {
+	public ProductPage(WebDriver driver) {
 		super(driver);
 	}
 	
@@ -32,5 +34,20 @@ public class ItemPage extends AbstractPage {
 		return dataSheet;
 	}
 
-	public
+	public ProductPage selectSize(String size) {
+		WebElement sizeField = prepareElement(SizePicker.SIZE_FIELD); // it is public, static -> don't need create entity; it possible to use it in other class
+		SizePicker sizePicker = new SizePicker(sizeField);
+		sizePicker.selectDropDown(size);
+		return this;
+	}
+
+
+	public ProductPage selectColor(String color) {
+		return this;
+	}
+
+	public ProductPage clickAddToCart() {
+
+		return this;
+	}
 }

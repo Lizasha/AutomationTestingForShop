@@ -3,17 +3,16 @@ package pages.elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import pages.SearchResultsPage;
-
-public class Product extends AbstractElement<Product> {
+public class ProductPreview extends AbstractElement<ProductPreview> {
 
 	private static final By MORE_BUTTON = By.xpath("//span[text()='More']/parent::a");
 
-	public Product(WebElement element) {
+	public ProductPreview(WebElement element) {
 		super(element);
 	}
 
-	public Product clickMore() {
+	public ProductPreview clickMore() {
+		prepareElement(MORE_BUTTON);
 		getElement().findElement(MORE_BUTTON).click();
 		return this;
 	}

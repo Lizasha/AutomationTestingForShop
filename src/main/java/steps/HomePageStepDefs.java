@@ -9,14 +9,14 @@ import org.junit.Test;
 
 import driver.DriverManager;
 import pages.HomePage;
-import pages.ItemPage;
+import pages.ProductPage;
 import pages.SearchResultsPage;
 
 public class HomePageStepDefs {
 
 	private HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
 	private SearchResultsPage searchResultsPage = new SearchResultsPage(DriverManager.getInstance().getDriver());
-	private ItemPage itemPage = new ItemPage(DriverManager.getInstance().getDriver());
+	private ProductPage productPage = new ProductPage(DriverManager.getInstance().getDriver());
 
 	@BeforeClass
 	public static void beforeClass() {
@@ -37,7 +37,7 @@ public class HomePageStepDefs {
 			.hover()
 			.clickMore();
 
-		Map<String,String> dataSheet = itemPage.readDataSheet();
+		Map<String,String> dataSheet = productPage.readDataSheet();
 
 		Assert.assertEquals(dataSheet.get("Compositions"),"Viscose");
 		Assert.assertEquals(dataSheet.get("Styles"),"Dressy");
@@ -58,12 +58,12 @@ public class HomePageStepDefs {
 			.hover()
 			.clickMore();
 
-		itemPage
+		productPage
 			.selectSize("M")
 			.selectColor("pink")
-			.clickAddToCart()
-			.clickContinueShopping();
-			.checkCart();
+			.clickAddToCart();
+			/*.clickContinueShopping();
+			.checkCart();*/
 	}
 
 	@Test
