@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import pages.elements.Product;
+import pages.elements.SubCategory;
+
 public class SearchResultsPage extends AbstractPage {
 	private static final String PRODUCT_ITEM_BY_TITLE = "//*[contains(@class, 'product-name')][contains(text(),'%s')]/ancestor::li";
 
@@ -16,16 +19,9 @@ public class SearchResultsPage extends AbstractPage {
 	}
 
 	public Product findProduct(String productName) {
-		// todo do it
-	}
-
-	public SearchResultsPage hoverOnProductByTitle(String productTitle) {
-		By productLocator = By.xpath(String.format(PRODUCT_ITEM_BY_TITLE, productTitle));
-
+		By productLocator = By.xpath(String.format(PRODUCT_ITEM_BY_TITLE, productName));
 		WebElement productElement = prepareElement(productLocator);
-
-		getBuilder().moveToElement(productElement).perform();
-		return this;
+		return new Product(productElement);
 	}
 
 	public SearchResultsPage clickOnProductMoreButton() {

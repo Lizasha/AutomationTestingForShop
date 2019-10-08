@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-abstract class AbstractElement<T extends AbstractElement<?>> {
+public abstract class AbstractElement<T extends AbstractElement<?>> {
     private WebElement element;
     private WebDriver driver;
 

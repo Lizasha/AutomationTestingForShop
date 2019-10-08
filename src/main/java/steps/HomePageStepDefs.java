@@ -35,13 +35,40 @@ public class HomePageStepDefs {
 		searchResultsPage
 			.findProduct("Printed Dress")
 			.hover()
-			.clickMoreButton();
+			.clickMore();
 
 		Map<String,String> dataSheet = itemPage.readDataSheet();
 
 		Assert.assertEquals(dataSheet.get("Compositions"),"Viscose");
 		Assert.assertEquals(dataSheet.get("Styles"),"Dressy");
 		Assert.assertEquals(dataSheet.get("Properties"),"Short Dress");
+	}
+
+	@Test
+	public void checkAddingToCart() {
+		homePage
+			.openPage()
+			.findCategory("Dresses")
+			.hover()
+			.findSubcategory("Evening Dresses")
+			.click();
+
+		searchResultsPage
+			.findProduct("Printed Dress")
+			.hover()
+			.clickMore();
+
+		itemPage
+			.selectSize("M")
+			.selectColor("pink")
+			.clickAddToCart()
+			.clickContinueShopping();
+			.checkCart();
+	}
+
+	@Test
+	public void checkDeletingFromCart() {
+
 	}
 
 	@AfterClass
